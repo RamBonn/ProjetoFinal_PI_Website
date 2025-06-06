@@ -5,46 +5,63 @@
     <title>Seismic Activity - Portugal</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        body { 
-              margin: 0;
-              font-family: Arial, sans-serif;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              height: 100vh;
-              background: #f0f0f0;
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
         }
+
+        /* NAVBAR */
+        nav {
+            background-color: #cc5500;
+            padding: 30px 30px;
+            display: flex;
+            justify-content: center; /* center horizontally */
+            align-items: center;     /* center vertically */
+            gap: 30px;
+            color: white;
+            height: 60px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* MAP CENTERING */
+        .content {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: calc(100vh - 60px); /* minus navbar height */
+            padding-top: 20px;
+        }
+
         #map-container {
-          position: relative;
-          height: 600px;
-          width: 80vw;
-          max-width: 1000px;
-          border: 2px solid #ccc;
-          border-radius: 10px;
-          box-shadow: 0 0 10px rgba(0,0,0,0.3);
-          overflow: hidden;
+            position: relative;
+            height: 550px;
+            width: 80vw;
+            max-width: 1000px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            overflow: hidden;
+            background: white;
+            margin-left: 40px;
         }
 
         #map {
-         height: 100%;
-         width: 100%;
-         border-radius: 10px;
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
         }
 
-        #legend {
-         position: absolute;
-         top: 15px;
-         right: 15px;
-         background: white;
-         padding: 10px 15px;
-         border-radius: 5px;
-         font-size: 14px;
-         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-         z-index: 1000;
-         line-height: 1.5;
-        }
-
-        
         #message {
             position: absolute;
             top: 10px;
@@ -55,24 +72,51 @@
             z-index: 1000;
             box-shadow: 0 0 5px rgba(0,0,0,0.3);
         }
-       
 
+        #legend {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
-    <div id="message">Loading seismic data...</div>
-    <div id="map-container">
-      <div id="map"></div>
-      <div id="legend">
-        <strong>Legenda</strong><br>
-        <span style="color: darkred;">●</span> &le; 24 horas<br>
-        <span style="color: orange;">●</span> 1–7 dias<br>
-        <span style="color: gold;">●</span> > 7 dias
-      </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <a href="locais.html">Locais de evacuação</a>
+        <a href="planos.html">Planos de evacuação</a>
+        <a href="contactos.html">Contactos</a>
+    </nav>
+
+    <!-- MAP + LEGEND -->
+    <div class="content">
+        <div id="map-container">
+            <div id="message">Loading seismic data...</div>
+            <div id="map"></div>
+            <div id="legend">
+                <strong>Legenda</strong><br>
+                <span style="color: darkred;">●</span> ≤ 24 horas<br>
+                <span style="color: orange;">●</span> 1–7 dias<br>
+                <span style="color: gold;">●</span> > 7 dias
+            </div>
+        </div>
     </div>
+
+    <!-- LEAFLET + JAVASCRIPT -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        const map = L.map('map').setView([38.5, -25], 6); // Centered on Azores region
+        const map = L.map('map').setView([38.5, -25], 6);
+        setTimeout(() => {
+            map.invalidateSize();
+        }, 200);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
@@ -88,7 +132,7 @@
 
             if (diffDays < 1) return 'darkred';
             if (diffDays < 7) return 'orange';
-            return 'yellow';
+            return 'gold';
         }
 
         fetch(apiUrl)
@@ -110,7 +154,7 @@
                     const color = getColor(time);
 
                     L.circleMarker([lat, lon], {
-                        radius: Math.max(4, mag * 2.5), // Increased size
+                        radius: Math.max(4, mag * 2.5),
                         color: color,
                         fillColor: color,
                         fillOpacity: 0.75,
@@ -131,6 +175,7 @@
     </script>
 </body>
 </html>
+
 
 
 
