@@ -13,26 +13,89 @@
 
         /* NAVBAR */
         nav {
-            background-color: #cc5500;
-            padding: 30px 30px;
-            display: flex;
-            justify-content: center; /* center horizontally */
-            align-items: center;     /* center vertically */
-            gap: 30px;
-            color: white;
-            height: 60px;
+          position: relative;
+          background-color: #cc5500;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          padding: 0 30px;
+          color: white;
         }
 
-        nav a {
-            color: white;
+        /* LEFT (Dropdown) */
+        .nav-left {
+          z-index: 2;
+        }
+
+        .dropdown {
+           position: relative;
+        }
+
+        .dropbtn {
+           background-color: #0077cc;
+           color: white;
+           padding: 10px 16px;
+           font-size: 16px;
+           border: none;
+           cursor: pointer;
+           font-weight: bold;
+           border-radius: 4px;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: white;
+          min-width: 180px;
+          box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+          z-index: 1000;
+          border-radius: 0 0 8px 8px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 20px;
+            display: block;
+            font-size: 14px;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        .dropdown-content a:hover {
+           background-color: #f1f1f1;
         }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+           background-color: #005fa3;
+        }
+
+        /* CENTERED LINKS */
+        .nav-center {
+           position: absolute;
+           left: 50%;
+           transform: translateX(-50%);
+           display: flex;
+           gap: 30px;
+           align-items: center;
+        }
+
+        .nav-center a {
+           color: white;
+           text-decoration: none;
+           font-weight: bold;
+           font-size: 20px;
+        }
+
+        .nav-center a:hover {
+          text-decoration: underline;
+        }
+
+       
 
         /* MAP CENTERING */
         .content {
@@ -123,9 +186,21 @@
 
     <!-- NAVIGATION BAR -->
     <nav>
-        <a href="locais.html">Locais de evacuação</a>
-        <a href="planos.html">Planos de evacuação</a>
-        <a href="contactos.html">Contactos</a>
+      <div class="nav-left">
+          <div class="dropdown">
+             <button class="dropbtn">Mais</button>
+             <div class="dropdown-content">
+                 <a href="informacao.html">Informação descritiva</a>
+                 <a href="comunicados.html">Comunicados</a>
+                </div>
+            </div>
+        </div>
+
+       <div class="nav-center">
+           <a href="locais.html">Locais de evacuação</a>
+           <a href="planos.html">Planos de evacuação</a>
+           <a href="contactos.html">Contactos</a>
+        </div>
     </nav>
 
     <!-- MAP + LEGEND -->
