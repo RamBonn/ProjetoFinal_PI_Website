@@ -14,15 +14,37 @@
               height: 100vh;
               background: #f0f0f0;
         }
-        #map { 
-             height: 600px;  /* adjust as needed */
-             width: 80vw;    /* or set a fixed width like 800px */
-             max-width: 1000px;
-             border: 2px solid #ccc;
-             border-radius: 10px;
-             box-shadow: 0 0 10px rgba(0,0,0,0.3);
-
+        #map-container {
+          position: relative;
+          height: 600px;
+          width: 80vw;
+          max-width: 1000px;
+          border: 2px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.3);
+          overflow: hidden;
         }
+
+        #map {
+         height: 100%;
+         width: 100%;
+         border-radius: 10px;
+        }
+
+        #legend {
+         position: absolute;
+         top: 15px;
+         right: 15px;
+         background: white;
+         padding: 10px 15px;
+         border-radius: 5px;
+         font-size: 14px;
+         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+         z-index: 1000;
+         line-height: 1.5;
+        }
+
+        
         #message {
             position: absolute;
             top: 10px;
@@ -33,12 +55,21 @@
             z-index: 1000;
             box-shadow: 0 0 5px rgba(0,0,0,0.3);
         }
+       
+
     </style>
 </head>
 <body>
     <div id="message">Loading seismic data...</div>
-    <div id="map"></div>
-
+    <div id="map-container">
+      <div id="map"></div>
+      <div id="legend">
+        <strong>Legenda</strong><br>
+        <span style="color: darkred;">●</span> &le; 24 horas<br>
+        <span style="color: orange;">●</span> 1–7 dias<br>
+        <span style="color: gold;">●</span> > 7 dias
+      </div>
+    </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         const map = L.map('map').setView([38.5, -25], 6); // Centered on Azores region
