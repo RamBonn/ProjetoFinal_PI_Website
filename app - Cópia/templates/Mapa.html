@@ -5,8 +5,24 @@
     <title>Seismic Activity - Portugal</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        body { margin: 0; font-family: Arial, sans-serif; }
-        #map { height: 100vh; width: 100%; }
+        body { 
+              margin: 0;
+              font-family: Arial, sans-serif;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              background: #f0f0f0;
+        }
+        #map { 
+             height: 600px;  /* adjust as needed */
+             width: 80vw;    /* or set a fixed width like 800px */
+             max-width: 1000px;
+             border: 2px solid #ccc;
+             border-radius: 10px;
+             box-shadow: 0 0 10px rgba(0,0,0,0.3);
+
+        }
         #message {
             position: absolute;
             top: 10px;
