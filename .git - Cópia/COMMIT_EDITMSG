@@ -1,0 +1,31 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch 1-2_Rotas-e-Templates
+# Your branch is up to date with 'origin/1-2_Rotas-e-Templates'.
+#
+# Changes to be committed:
+#	new file:   .DS_Store
+#	new file:   ProjetoFinal_AtividadeSismica
+#	new file:   ProjetoFinal_PI
+#	new file:   app/.DS_Store
+#	modified:   app/Dockerfile
+#	modified:   app/__pycache__/app.cpython-39.pyc
+#	modified:   app/__pycache__/wsgi.cpython-39.pyc
+#	modified:   app/app.py
+#	modified:   app/requirements.txt
+#	new file:   app/templates/-index.html
+#	new file:   app/templates/-sobre.html
+#	new file:   app/templates/Mapa.html
+#	modified:   app/templates/base.html
+#	deleted:    app/templates/index-base.html
+#	modified:   app/templates/index.html
+#	deleted:    app/templates/sobre-.html
+#	modified:   app/templates/sobre.html
+#	modified:   docker-compose.yaml
+#
+# Changes not staged for commit:
+#	deleted:    ProjetoFinal_AtividadeSismica
+#	deleted:    ProjetoFinal_PI
+#

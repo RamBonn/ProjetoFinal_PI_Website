@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seismic Activity - Portugal</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+        #map { height: 100vh; width: 100%; }
+        #message {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Loading seismic data...</div>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([38.5, -25], 6); // Centered on Azores region
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        const apiUrl = 'https://api.ipma.pt/open-data/observation/seismic/7.json';
+
+        function getColor(eventTime) {
+            const now = new Date();
+            const eventDate = new Date(eventTime);
+            const diffMs = now - eventDate;
+            const diffDays = diffMs / (1000 * 60 * 60 * 24);
+
+            if (diffDays < 1) return 'darkred';
+            if (diffDays < 7) return 'orange';
+            return 'yellow';
+        }
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(json => {
+                const quakes = json.data.filter(q => q.lat && q.lon);
+
+                if (quakes.length === 0) {
+                    document.getElementById('message').textContent = "No seismic activity found.";
+                    return;
+                }
+
+                quakes.forEach(q => {
+                    const lat = parseFloat(q.lat);
+                    const lon = parseFloat(q.lon);
+                    const mag = parseFloat(q.magnitud) || 1.0;
+                    const region = q.obsRegion || "Unknown region";
+                    const time = q.time || "Unknown time";
+                    const color = getColor(time);
+
+                    L.circleMarker([lat, lon], {
+                        radius: Math.max(4, mag * 2.5), // Increased size
+                        color: color,
+                        fillColor: color,
+                        fillOpacity: 0.75,
+                        weight: 1
+                    }).addTo(map).bindPopup(`
+                        <strong>${region}</strong><br>
+                        Magnitude: ${mag}<br>
+                        Time: ${time}
+                    `);
+                });
+
+                document.getElementById('message').style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error loading data:', error);
+                document.getElementById('message').textContent = "Failed to load seismic data.";
+            });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

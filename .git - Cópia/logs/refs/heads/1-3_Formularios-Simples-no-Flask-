@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 266753a226b2e14f09dada422aef08b56ea1f2e2 StorThiago <tbpsa@iscte-iul.pt> 1743011858 +0000	branch: Created from main
+266753a226b2e14f09dada422aef08b56ea1f2e2 0cccc640634757e21d06ba2a689454d9ee41257a StorThiago <tbpsa@iscte-iul.pt> 1743020146 +0000	commit: feat: base para a aula
+0cccc640634757e21d06ba2a689454d9ee41257a bddc9e0897c41d852e40145cc7fb20c1d4408fd6 StorThiago <tbpsa@iscte-iul.pt> 1743411432 +0100	commit: what??
+bddc9e0897c41d852e40145cc7fb20c1d4408fd6 5547cf45de2cafec7424aa906b92fbc9fd5a6188 StorThiago <tbpsa@iscte-iul.pt> 1743724127 +0100	revert: Revert "what??"
+5547cf45de2cafec7424aa906b92fbc9fd5a6188 d19d0adb0987b59056131b8e8e60bd7324082d66 StorThiago <tbpsa@iscte-iul.pt> 1743724295 +0100	commit: update gitignore

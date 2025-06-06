@@ -1,0 +1,31 @@
+0000000000000000000000000000000000000000 02e4d2fe06021832cbecb5a9bc31802328b6ea41 StorThiago <tbpsa@iscte-iul.pt> 1743010885 +0000	commit (initial): Initial commit
+02e4d2fe06021832cbecb5a9bc31802328b6ea41 266753a226b2e14f09dada422aef08b56ea1f2e2 StorThiago <tbpsa@iscte-iul.pt> 1743011005 +0000	commit: feat: base do projeto
+266753a226b2e14f09dada422aef08b56ea1f2e2 266753a226b2e14f09dada422aef08b56ea1f2e2 StorThiago <tbpsa@iscte-iul.pt> 1743011858 +0000	checkout: moving from main to 1-3_Formularios-Simples-no-Flask-
+266753a226b2e14f09dada422aef08b56ea1f2e2 266753a226b2e14f09dada422aef08b56ea1f2e2 StorThiago <tbpsa@iscte-iul.pt> 1743012598 +0000	checkout: moving from 1-3_Formularios-Simples-no-Flask- to 1-1_Introducao
+266753a226b2e14f09dada422aef08b56ea1f2e2 266753a226b2e14f09dada422aef08b56ea1f2e2 StorThiago <tbpsa@iscte-iul.pt> 1743012613 +0000	checkout: moving from 1-1_Introducao to 1-2_Rotas-e-Templates
+266753a226b2e14f09dada422aef08b56ea1f2e2 266753a226b2e14f09dada422aef08b56ea1f2e2 StorThiago <tbpsa@iscte-iul.pt> 1743012616 +0000	checkout: moving from 1-2_Rotas-e-Templates to 1-1_Introducao
+266753a226b2e14f09dada422aef08b56ea1f2e2 0b0c97721c3a82582f56a410c95c1b023a307c62 StorThiago <tbpsa@iscte-iul.pt> 1743013012 +0000	commit: feat: base para a aula
+0b0c97721c3a82582f56a410c95c1b023a307c62 266753a226b2e14f09dada422aef08b56ea1f2e2 StorThiago <tbpsa@iscte-iul.pt> 1743013021 +0000	checkout: moving from 1-1_Introducao to 1-2_Rotas-e-Templates
+266753a226b2e14f09dada422aef08b56ea1f2e2 aaa50d42dffcc72590a85f1f9db52ba4c523aee8 StorThiago <tbpsa@iscte-iul.pt> 1743013866 +0000	commit: feat: base para a aula
+aaa50d42dffcc72590a85f1f9db52ba4c523aee8 266753a226b2e14f09dada422aef08b56ea1f2e2 StorThiago <tbpsa@iscte-iul.pt> 1743013877 +0000	checkout: moving from 1-2_Rotas-e-Templates to 1-3_Formularios-Simples-no-Flask-
+266753a226b2e14f09dada422aef08b56ea1f2e2 266753a226b2e14f09dada422aef08b56ea1f2e2 StorThiago <tbpsa@iscte-iul.pt> 1743015413 +0000	reset: moving to HEAD
+266753a226b2e14f09dada422aef08b56ea1f2e2 aaa50d42dffcc72590a85f1f9db52ba4c523aee8 StorThiago <tbpsa@iscte-iul.pt> 1743015413 +0000	checkout: moving from 1-3_Formularios-Simples-no-Flask- to 1-2_Rotas-e-Templates
+aaa50d42dffcc72590a85f1f9db52ba4c523aee8 266753a226b2e14f09dada422aef08b56ea1f2e2 StorThiago <tbpsa@iscte-iul.pt> 1743015453 +0000	checkout: moving from 1-2_Rotas-e-Templates to 1-3_Formularios-Simples-no-Flask-
+266753a226b2e14f09dada422aef08b56ea1f2e2 0cccc640634757e21d06ba2a689454d9ee41257a StorThiago <tbpsa@iscte-iul.pt> 1743020146 +0000	commit: feat: base para a aula
+0cccc640634757e21d06ba2a689454d9ee41257a bddc9e0897c41d852e40145cc7fb20c1d4408fd6 StorThiago <tbpsa@iscte-iul.pt> 1743411432 +0100	commit: what??
+bddc9e0897c41d852e40145cc7fb20c1d4408fd6 bddc9e0897c41d852e40145cc7fb20c1d4408fd6 StorThiago <tbpsa@iscte-iul.pt> 1743411586 +0100	reset: moving to HEAD
+bddc9e0897c41d852e40145cc7fb20c1d4408fd6 0b0c97721c3a82582f56a410c95c1b023a307c62 StorThiago <tbpsa@iscte-iul.pt> 1743411586 +0100	checkout: moving from 1-3_Formularios-Simples-no-Flask- to 1-1_Introducao
+0b0c97721c3a82582f56a410c95c1b023a307c62 0b0c97721c3a82582f56a410c95c1b023a307c62 StorThiago <tbpsa@iscte-iul.pt> 1743417318 +0100	reset: moving to HEAD
+0b0c97721c3a82582f56a410c95c1b023a307c62 aaa50d42dffcc72590a85f1f9db52ba4c523aee8 StorThiago <tbpsa@iscte-iul.pt> 1743417318 +0100	checkout: moving from 1-1_Introducao to 1-2_Rotas-e-Templates
+aaa50d42dffcc72590a85f1f9db52ba4c523aee8 0b0c97721c3a82582f56a410c95c1b023a307c62 StorThiago <tbpsa@iscte-iul.pt> 1743615062 +0100	checkout: moving from 1-2_Rotas-e-Templates to 1-1_Introducao
+0b0c97721c3a82582f56a410c95c1b023a307c62 aaa50d42dffcc72590a85f1f9db52ba4c523aee8 StorThiago <tbpsa@iscte-iul.pt> 1743674199 +0100	checkout: moving from 1-1_Introducao to 1-2_Rotas-e-Templates
+aaa50d42dffcc72590a85f1f9db52ba4c523aee8 da50cbac80b74bb158aa239d59395b082ca3d5cf StorThiago <tbpsa@iscte-iul.pt> 1743680794 +0100	commit: feat: melhorias
+da50cbac80b74bb158aa239d59395b082ca3d5cf bddc9e0897c41d852e40145cc7fb20c1d4408fd6 StorThiago <tbpsa@iscte-iul.pt> 1743698852 +0100	checkout: moving from 1-2_Rotas-e-Templates to 1-3_Formularios-Simples-no-Flask-
+bddc9e0897c41d852e40145cc7fb20c1d4408fd6 5547cf45de2cafec7424aa906b92fbc9fd5a6188 StorThiago <tbpsa@iscte-iul.pt> 1743724127 +0100	revert: Revert "what??"
+5547cf45de2cafec7424aa906b92fbc9fd5a6188 d19d0adb0987b59056131b8e8e60bd7324082d66 StorThiago <tbpsa@iscte-iul.pt> 1743724295 +0100	commit: update gitignore
+d19d0adb0987b59056131b8e8e60bd7324082d66 da50cbac80b74bb158aa239d59395b082ca3d5cf StorThiago <tbpsa@iscte-iul.pt> 1743724323 +0100	checkout: moving from 1-3_Formularios-Simples-no-Flask- to 1-2_Rotas-e-Templates
+da50cbac80b74bb158aa239d59395b082ca3d5cf d19d0adb0987b59056131b8e8e60bd7324082d66 StorThiago <tbpsa@iscte-iul.pt> 1743783544 +0100	checkout: moving from 1-2_Rotas-e-Templates to 1-3_Formularios-Simples-no-Flask-
+d19d0adb0987b59056131b8e8e60bd7324082d66 da50cbac80b74bb158aa239d59395b082ca3d5cf StorThiago <tbpsa@iscte-iul.pt> 1744014572 +0100	checkout: moving from 1-3_Formularios-Simples-no-Flask- to 1-2_Rotas-e-Templates
+da50cbac80b74bb158aa239d59395b082ca3d5cf d19d0adb0987b59056131b8e8e60bd7324082d66 StorThiago <tbpsa@iscte-iul.pt> 1744014590 +0100	checkout: moving from 1-2_Rotas-e-Templates to 1-3_Formularios-Simples-no-Flask-
+d19d0adb0987b59056131b8e8e60bd7324082d66 d19d0adb0987b59056131b8e8e60bd7324082d66 StorThiago <tbpsa@iscte-iul.pt> 1744014699 +0100	reset: moving to HEAD
+d19d0adb0987b59056131b8e8e60bd7324082d66 da50cbac80b74bb158aa239d59395b082ca3d5cf StorThiago <tbpsa@iscte-iul.pt> 1744014699 +0100	checkout: moving from 1-3_Formularios-Simples-no-Flask- to 1-2_Rotas-e-Templates
