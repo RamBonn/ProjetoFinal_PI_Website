@@ -1,25 +1,44 @@
-from flask import Flask, render_template
-
+from flask import Flask, jsonify
+import requests
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
+@app.route('/api/seismic')
+def get_seismic_data():
+    url = 'https://api.ipma.pt/open-data/observation/seismic/7.json'
+    try:
+        res = requests.get(url)
+        data = res.json().get('data', [])
+    except Exception as e:
+        return jsonify({"error": "Failed to fetch data", "details": str(e)}), 500
 
-@app.route("/")
-def home():
-    # return "Olá, mundo! Aplicação rodando no Docker."
-    return render_template('index.html')
-    
+    now = datetime.utcnow()
+    filtered = []
 
-@app.route('/user/<username>')
-def show_user(username):
-    return f"Bem-vindo, {username}!"
+    for quake in data:
+        try:
+            lat = float(quake.get('lat', 0))
+            lon = float(quake.get('lon', 0))
+            mag = float(quake.get('magnitud', 1.0))
+            time_str = quake.get('time')
+            region = quake.get('obsRegion', 'Unknown region')
+            if not (lat and lon and time_str):
+                continue
 
+            time_obj = datetime.strptime(time_str, "%Y-%m-%dT%H:%M:%S")
+            age_hours = (now - time_obj).total_seconds() / 3600
 
-@app.route("/sobre")
-def sobre():
-    return render_template('sobre.html')
+            filtered.append({
+                'lat': lat,
+                'lon': lon,
+                'mag': mag,
+                'time': time_str,
+                'region': region,
+                'age_hours': age_hours
+            })
 
+        except Exception as e:
+            continue
 
-if __name__ == "__main__":
-    # app.run(host="0.0.0.0", port=8000)
-    app.run(debug=True)
+    return jsonify(filtered)
