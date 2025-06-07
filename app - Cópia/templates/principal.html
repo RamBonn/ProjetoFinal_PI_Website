@@ -251,43 +251,56 @@
         fetch(apiUrl)
             .then(response => response.json())
             .then(json => {
-             const quakes = json.data.filter(q => q.lat && q.lon);
+                const quakes = json.data.filter(q => q.lat && q.lon);
 
-             if (quakes.length === 0) {
-                 document.getElementById('message').textContent = "No seismic activity found.";
-                 return;
-             }
+                if (quakes.length === 0) {
+                   document.getElementById('message').textContent = "Sem atividade sísmica encontrada.";
+                   return;
+                }
 
-             const now = new Date();
-             const recentQuakes = []; // will store <24h events
+                const now = new Date();
+                const recentQuakes = []; // will store <24h events
 
-             quakes.forEach(q => {
+                quakes.forEach(q => {
                   const lat = parseFloat(q.lat);
                   const lon = parseFloat(q.lon);
-                  const mag = parseFloat(q.magnitud) || 1.0;
-                  const region = q.obsRegion || "Unknown region";
-                  const time = q.time || "Unknown time";
-                  const eventDate = new Date(time);
+
+                 // Handle magnitude
+                  let mag = parseFloat(q.magnitud);
+                  if (isNaN(mag)) mag = null;
+
+                  const region = q.obsRegion || "Região desconhecida";
+                  const rawTime = q.time;
+                  const eventDate = rawTime ? new Date(rawTime) : null;
+
+                  const time = eventDate
+                     ? eventDate.toLocaleString('pt-PT', {
+                          dateStyle: 'short',
+                          timeStyle: 'short',
+                          timeZone: 'Europe/Lisbon'
+                        })
+                     : "Hora desconhecida";
+
                   const diffMs = now - eventDate;
                   const diffHours = diffMs / (1000 * 60 * 60);
-                  const color = getColor(time);
+                  const color = getColor(rawTime);
 
-                 // Display on the map
+                  // Display on the map
                   L.circleMarker([lat, lon], {
-                     radius: Math.max(4, mag * 2.5),
+                     radius: Math.max(4, mag ? mag * 2.5 : 5),
                      color: color,
                      fillColor: color,
                      fillOpacity: 0.75,
                      weight: 1
-                  }).addTo(map).bindPopup(`
-                     <strong>${region}</strong><br>
-                     Magnitude: ${mag}<br>
-                     Time: ${time}
-                  `);
+                    }).addTo(map).bindPopup(`
+                       <strong>${region}</strong><br>
+                       ${mag !== null ? `Magnitude: ${mag.toFixed(1)}` : "Magnitude desconhecida"}<br>
+                       Hora: ${time}
+                    `);
 
-                  // If event is within last 24 hours, push to recentQuakes
+                    // If event is within last 24 hours, push to recentQuakes
                   if (diffHours < 24) {
-                     recentQuakes.push({ region, mag, time });
+                      recentQuakes.push({ region, mag, time });
                     }
                 });
 
@@ -296,23 +309,29 @@
                 if (recentQuakes.length > 0) {
                   const list = document.createElement("ul");
                   recentQuakes.forEach(q => {
-                     const item = document.createElement("li");
-                     item.innerHTML = `<strong>${q.region}</strong> - Magnitude ${q.mag} <br><small>${q.time}</small>`;
-                     list.appendChild(item);
-                   });
-                  panel.appendChild(list);
+                       const item = document.createElement("li");
+                       item.innerHTML = `<strong>${q.region}</strong> - ${q.mag !== null ? `Magnitude ${q.mag.toFixed(1)}` : "Magnitude desconhecida"}<br><small>${q.time}</small>`;
+                       list.appendChild(item);
+                    });
+                    panel.appendChild(list);
                 } else {
-                    const msg = document.createElement("p");
-                    msg.textContent = "Sem atividade sísmica nas últimas 24 horas.";
-                    panel.appendChild(msg);
+                   const msg = document.createElement("p");
+                   msg.textContent = "Sem atividade sísmica nas últimas 24 horas.";
+                   panel.appendChild(msg);
                 }
 
                 document.getElementById('message').style.display = 'none';
-           })
-
+            })
+            .catch(err => {
+              document.getElementById('message').textContent = "Erro ao carregar os dados sísmicos.";
+              console.error("Erro na API sísmica:", err);
+            });
+            
     </script>
 </body>
 </html>
+
+           
 
 
 
