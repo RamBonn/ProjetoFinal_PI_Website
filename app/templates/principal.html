@@ -225,7 +225,8 @@
         </div>
 
         <div id="right-panel">
-        <h2>Últimas Horas</h2>
+          <h2>Últimas Horas</h2>
+          <ul id="quake-list"></ul>
         <!-- Add content here later -->
         </div>
 
@@ -259,37 +260,56 @@
         fetch('/api/seismic')
          .then(res => res.json())
          .then(data => {
-             const now = new Date();
              const recentQuakes = [];
 
              data.forEach(q => {
                  const { lat, lon, mag, time, region, age_hours } = q;
 
+                 // Decide marker color based on age
                  const color =
                      age_hours < 24 ? 'darkred' :
                      age_hours < 24 * 7 ? 'orange' : 'gold';
 
-                 // Map marker
+                     // 🔵 Always add the marker
                  L.circleMarker([lat, lon], {
-                      radius: Math.max(4, mag * 2.5),
-                      color: color,
-                      fillColor: color,
-                      fillOpacity: 0.75,
-                      weight: 1
+                       radius: Math.max(4, mag * 2.5),
+                       color,
+                       fillColor: color,
+                       fillOpacity: 0.75,
+                       weight: 1
                     }).addTo(map).bindPopup(`
                       <strong>${region}</strong><br>
                       Magnitude: ${mag}<br>
                       Time: ${time}
                     `);
 
+                     // 📋 Only collect recent ones for the right panel
                     if (age_hours < 24) {
                        recentQuakes.push({ region, mag, time });
                     }
                 });
 
-               // Display in right panel...
-               // (Same as your current logic)
-            });
+                // Fill the right panel list
+                const quakeListEl = document.getElementById('quake-list');
+                quakeListEl.innerHTML = ''; // clear previous
+
+                if (recentQuakes.length === 0) {
+                  quakeListEl.innerHTML = '<li>No recent seismic activity in the last 24 hours.</li>';
+                } else {
+                  recentQuakes.forEach(q => {
+                     const li = document.createElement('li');
+                     li.textContent = `${q.region}: magnitude ${q.mag}, time ${new Date(q.time).toLocaleString()}`;
+                     quakeListEl.appendChild(li);
+                    });
+                }
+            })
+            .catch(err => console.error('Fetch error:', err));
+
+
+    </script>
+</body>
+</html>
+
 
 
        
