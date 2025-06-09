@@ -298,7 +298,7 @@
                 } else {
                   recentQuakes.forEach(q => {
                      const li = document.createElement('li');
-                     li.textContent = `${q.region}: magnitude ${q.mag}, time ${new Date(q.time).toLocaleString()}`;
+                     li.textContent = `${q.region}: magnitude ${q.mag}, ${new Date(q.time).toLocaleString()}`;
                      quakeListEl.appendChild(li);
                     });
                 }
