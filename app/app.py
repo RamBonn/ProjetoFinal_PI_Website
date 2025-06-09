@@ -6,6 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 
+
 @app.route("/")
 def home():
     return render_template('principal.html')
@@ -51,4 +52,5 @@ def seismic_data():
             continue  # skip bad entries
 
     return jsonify(results)
+
 
