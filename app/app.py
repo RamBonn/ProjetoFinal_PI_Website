@@ -2,6 +2,7 @@ import requests
 from flask import Flask, render_template, jsonify
 from datetime import datetime
 
+
 app = Flask(__name__)
 
 
@@ -50,3 +51,4 @@ def seismic_data():
             continue  # skip bad entries
 
     return jsonify(results)
+

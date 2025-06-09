@@ -4,9 +4,9 @@ services:
     container_name: python_app
     environment:
       - DB_HOST=db
-      - DB_USER=${MYSQL_USER}
-      - DB_PASSWORD=${MYSQL_PASSWORD}
-      - DB_NAME=${MYSQL_DATABASE}
+      - DB_USER=flask_user
+      - DB_PASSWORD=flask_password
+      - DB_NAME=mysql_db
     networks:
       - mynetwork
     volumes:
