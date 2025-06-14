@@ -236,6 +236,8 @@
                 <button id="apply-filters">Aplicar Filtros</button>
             </div>
             <script>
+                let sismos = [];
+
                 document.getElementById('min-magnitude').addEventListener('input', function() {
                     document.getElementById('min-magnitude-value').textContent = this.value;
                 });
@@ -247,6 +249,7 @@
 
                     filtrarSismos(startDate, endDate, minMagnitude);
                 });
+                
                 function filtrarSismos(startDate, endDate, minMagnitude) {
                     const sismosFiltrados = sismos.filter(sismo => {
                         const dataSismo = new Date(sismo.data); // sismo.data deve ser no formato ISO ou compatível
