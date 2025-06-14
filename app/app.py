@@ -53,9 +53,7 @@ def seismic_data():
 
     return jsonify(results)
 
-<<<<<<< Updated upstream
 
-=======
 @app.route("/locais.html")
 def locais():
     return render_template("locais.html")
@@ -67,4 +65,3 @@ def contactos():
 @app.route("/planos.html")
 def planos():
     return render_template("planos.html")
->>>>>>> Stashed changes
