@@ -235,7 +235,32 @@
 
                 <button id="apply-filters">Aplicar Filtros</button>
             </div>
+            <script>
+                document.getElementById('min-magnitude').addEventListener('input', function() {
+                    document.getElementById('min-magnitude-value').textContent = this.value;
+                });
 
+                document.getElementById('apply-filters').addEventListener('click', () => {
+                    const startDate = new Date(document.getElementById('start-date').value);
+                    const endDate = new Date(document.getElementById('end-date').value);
+                    const minMagnitude = parseFloat(document.getElementById('min-magnitude').value);
+
+                    filtrarSismos(startDate, endDate, minMagnitude);
+                });
+                function filtrarSismos(startDate, endDate, minMagnitude) {
+                    const sismosFiltrados = sismos.filter(sismo => {
+                        const dataSismo = new Date(sismo.data); // sismo.data deve ser no formato ISO ou compatível
+                        return (
+                            (!isNaN(startDate) ? dataSismo >= startDate : true) &&
+                            (!isNaN(endDate) ? dataSismo <= endDate : true) &&
+                            sismo.magnitude >= minMagnitude
+                        );
+                    });
+
+                    atualizarMapa(sismosFiltrados);
+                }
+
+            </script>
         </div>
 
         <div id="right-panel">
