@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Locais de Evacuação</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #e0e0e0;
+    }
+
+    header {
+      background-color: #7bb9c0;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #map {
+      height: 90vh;
+      width: 100%;
+    }
+
+    .leaflet-popup-content {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header>Locais de Evacuação</header>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([39.5, -8], 7.2);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Locais simulados de evacuação
+    const locaisEvacuacao = [
+      { nome: "Centro Desportivo de Lisboa", coords: [38.736946, -9.142685] },
+      { nome: "Escola Básica do Porto", coords: [41.14961, -8.61099] },
+      { nome: "Parque Municipal de Coimbra", coords: [40.2115, -8.4292] },
+      { nome: "Pavilhão Multiusos de Faro", coords: [37.0194, -7.9304] }
+    ];
+
+    locaisEvacuacao.forEach(local => {
+      L.marker(local.coords)
+        .addTo(map)
+        .bindPopup(`<strong>${local.nome}</strong><br>Local preparado para evacuação.`);
+    });
+  </script>
+</body>
+</html>
