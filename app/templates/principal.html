@@ -223,33 +223,6 @@
                 <span style="color: gold;">●</span> > 7 dias
             </div>
             
-            <script>
-                let sismos = [];
-
-                document.getElementById("apply-filters").addEventListener("click", () => {
-                    const filterValue = document.getElementById("time-filter").value;
-
-                    Sismos.forEach(marker => {
-                        const quakeTime = new Date(marker.options.customTime); // assume que guardaste a data do sismo na marker.options.customTime
-                        const now = new Date();
-                        const diffHours = (now - quakeTime) / (1000 * 60 * 60);
-
-                        let show = false;
-
-                        if (filterValue === "24h" && diffHours <= 24) show = true;
-                        if (filterValue === "1-7d" && diffHours > 24 && diffHours <= 24 * 7) show = true;
-                        if (filterValue === "7d" && diffHours > 24 * 7) show = true;
-                        if (filterValue === "all") show = true;
-
-                        if (show) {
-                            marker.addTo(map);
-                        } else {
-                            map.removeLayer(marker);
-                        }
-                    });
-                });
-
-            </script>
         </div>
 
         <div id="filters" style="margin-left: 40px; margin-top: 10px;">
@@ -301,34 +274,39 @@
         fetch('/api/seismic')
          .then(res => res.json())
          .then(data => {
-             const recentQuakes = [];
+            const recentQuakes = [];
 
-             data.forEach(q => {
-                 const { lat, lon, mag, time, region, age_hours } = q;
+            data.forEach(q => {
+                const { lat, lon, mag, time, region, age_hours } = q;
 
                  // Decide marker color based on age
-                 const color =
+                const color =
                      age_hours < 24 ? 'darkred' :
                      age_hours < 24 * 7 ? 'orange' : 'gold';
 
                      // 🔵 Always add the marker
-                 L.circleMarker([lat, lon], {
-                       radius: Math.max(4, mag * 2.5),
-                       color,
-                       fillColor: color,
-                       fillOpacity: 0.75,
-                       weight: 1
-                    }).addTo(map).bindPopup(`
-                      <strong>${region}</strong><br>
-                      Magnitude: ${mag}<br>
-                      Time: ${time}
-                    `);
+                const marker = L.circleMarker([lat, lon], {
+                    radius: Math.max(4, mag * 2.5),
+                    color,
+                    fillColor: color,
+                    fillOpacity: 0.75,
+                    weight: 1,
+                    customTime: new Date(time) // necessário para o filtro
+                }).bindPopup(`
+                    <strong>${region}</strong><br>
+                    Magnitude: ${mag}<br>
+                    Time: ${time}
+                `);
 
-                     // 📋 Only collect recent ones for the right panel
-                    if (age_hours < 24) {
-                       recentQuakes.push({ region, mag, time });
-                    }
-                });
+                marker.addTo(map);
+
+                sismos.push(marker);
+
+                 // 📋 Only collect recent ones for the right panel
+                if (age_hours < 24) {
+                   recentQuakes.push({ region, mag, time });
+                }
+            });
 
                 // Fill the right panel list
                 const quakeListEl = document.getElementById('quake-list');
@@ -346,6 +324,33 @@
             })
             .catch(err => console.error('Fetch error:', err));
 
+
+    </script>
+    <script>
+                let sismos = [];
+
+                document.getElementById("apply-filters").addEventListener("click", () => {
+                    const filterValue = document.getElementById("time-filter").value;
+
+                    Sismos.forEach(marker => {
+                        const quakeTime = new Date(marker.options.customTime); // assume que guardaste a data do sismo na marker.options.customTime
+                        const now = new Date();
+                        const diffHours = (now - quakeTime) / (1000 * 60 * 60);
+
+                        let show = false;
+
+                        if (filterValue === "24h" && diffHours <= 24) show = true;
+                        if (filterValue === "1-7d" && diffHours > 24 && diffHours <= 24 * 7) show = true;
+                        if (filterValue === "7d" && diffHours > 24 * 7) show = true;
+                        if (filterValue === "all") show = true;
+
+                        if (show) {
+                            marker.addTo(map);
+                        } else {
+                            map.removeLayer(marker);
+                        }
+                    });
+                });
 
     </script>
 </body>
