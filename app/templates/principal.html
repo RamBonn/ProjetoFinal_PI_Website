@@ -265,20 +265,19 @@
 
             </script>
         </div>
-        
-        <div id="filters">
-                <label for="start-date">Data início:</label>
-                <input type="date" id="start-date">
 
-                <label for="end-date">Data fim:</label>
-                <input type="date" id="end-date">
+        <div id="filters" style="margin-left: 40px; margin-top: 10px;">
+            <label for="time-filter">Filtrar por tempo:</label>
+            <select id="time-filter">
+                <option value="24h">≤ 24 horas</option>
+                <option value="1-7d">1–7 dias</option>
+                <option value="7d">> 7 dias</option>
+                <option value="all">Mostrar todos</option>
+            </select>
 
-                <label for="min-magnitude">Intensidade mínima:</label>
-                <input type="range" id="min-magnitude" min="0" max="10" step="0.1" value="0">
-                <span id="min-magnitude-value">0</span>
+            <button id="apply-filters">Aplicar Filtro</button>
+        </div>
 
-                <button id="apply-filters">Aplicar Filtros</button>
-            </div>
 
         <div id="right-panel">
           <h2>Últimas Horas</h2>
