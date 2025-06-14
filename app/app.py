@@ -53,6 +53,8 @@ def seismic_data():
 
     return jsonify(results)
 
+
+
 @app.route("/locais.html")
 def locais():
     return render_template("locais.html")
