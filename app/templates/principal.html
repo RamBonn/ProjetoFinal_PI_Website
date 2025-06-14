@@ -250,6 +250,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         const map = L.map('map').setView([38.5, -25], 6);
+        let sismos = [];
         setTimeout(() => {
             map.invalidateSize();
         }, 200);
@@ -327,12 +328,11 @@
 
     </script>
     <script>
-                let sismos = [];
 
                 document.getElementById("apply-filters").addEventListener("click", () => {
                     const filterValue = document.getElementById("time-filter").value;
 
-                    Sismos.forEach(marker => {
+                    sismos.forEach(marker => {
                         const quakeTime = new Date(marker.options.customTime); // assume que guardaste a data do sismo na marker.options.customTime
                         const now = new Date();
                         const diffHours = (now - quakeTime) / (1000 * 60 * 60);
