@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Contactos de Emergência</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eaeaea;
+    }
+
+    nav {
+      background-color: #7bb9c0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 30px;
+    }
+    .nav-center {
+      margin: 0 auto;
+      display: flex;
+      gap: 100px;
+    }
+    .nav-center a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+    }
+
+    #contactos-panel {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    #contactos-panel h1 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    #contactos-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    #contactos-list li {
+      margin-bottom: 15px;
+      font-size: 18px;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+    }
+    #contactos-list li i {
+      font-size: 24px;
+      margin-right: 15px;
+      color: #7bb9c0;
+    }
+
+    #contactos-list li span.number {
+      font-weight: bold;
+      margin-left: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-center">
+      <a href="/">Sismos</a>
+      <a href="/locais.html">Locais de evacuação</a>
+      <a href="/planos.html">Planos de evacuação</a>
+      <a href="/contactos.html">Contactos</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div id="contactos-panel">
+      <h1>Contactos de Emergência</h1>
+      <ul id="contactos-list">
+        <li><i class="bi bi-fire"></i> Bombeiros: <span class="number">213 422 222</span></li>
+        <li><i class="bi bi-headset"></i> CIAV (Apoio à Vítima): <span class="number">808 250 142</span></li>
+        <li><i class="bi bi-shield-lock"></i> PSP (Polícia): <span class="number">218 111 000</span></li>
+        <li><i class="bi bi-shield-fill"></i> GNR: <span class="number">213 217 000</span></li>
+        <li><i class="bi bi-heart-pulse"></i> INEM: <span class="number">112</span></li>
+        <li><i class="bi bi-phone"></i> Saúde 24: <span class="number">808 24 24 24</span></li>
+        <li><i class="bi bi-cross"></i> Cruz Vermelha: <span class="number">217 714 000</span></li>
+        <li><i class="bi bi-house"></i> Proteção Civil: <span class="number">214 247 100</span></li>
+      </ul>
+
+      <h2>Outras Informações</h2>
+      <p>Para mais detalhes, consulte a página do Serviço Municipal de Proteção Civil de Lisboa.</p>
+    </div>
+  </div>
+
+</body>
+</html>
