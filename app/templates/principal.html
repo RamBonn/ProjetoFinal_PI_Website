@@ -249,7 +249,7 @@
 
                     filtrarSismos(startDate, endDate, minMagnitude);
                 });
-                
+
                 function filtrarSismos(startDate, endDate, minMagnitude) {
                     const sismosFiltrados = sismos.filter(sismo => {
                         const dataSismo = new Date(sismo.data); // sismo.data deve ser no formato ISO ou compatível
@@ -265,6 +265,20 @@
 
             </script>
         </div>
+        
+        <div id="filters">
+                <label for="start-date">Data início:</label>
+                <input type="date" id="start-date">
+
+                <label for="end-date">Data fim:</label>
+                <input type="date" id="end-date">
+
+                <label for="min-magnitude">Intensidade mínima:</label>
+                <input type="range" id="min-magnitude" min="0" max="10" step="0.1" value="0">
+                <span id="min-magnitude-value">0</span>
+
+                <button id="apply-filters">Aplicar Filtros</button>
+            </div>
 
         <div id="right-panel">
           <h2>Últimas Horas</h2>
